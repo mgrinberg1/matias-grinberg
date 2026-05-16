@@ -15,7 +15,6 @@ export default function Nav() {
         <div className="flex items-center gap-3 sm:gap-5 font-[family-name:var(--font-geist-mono)] text-xs sm:text-sm">
           <a href="#career" className={L}>career</a>
           <a href="#me" className={L}>me</a>
-          <a href="#river" className={L}>river</a>
           <a
             href="https://x.com/matt1_g"
             target="_blank"

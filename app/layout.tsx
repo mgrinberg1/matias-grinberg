@@ -15,12 +15,35 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://matias-grinberg.vercel.app"),
   title: {
     default: "Matias Grinberg",
     template: "%s | Matias Grinberg",
   },
-  description:
-    "Founder of Queiros. Business Development at Complif. Builder at the intersection of ops, AI, and Latin America.",
+  description: "Hey! This is me, Matias. A little about myself.",
+  openGraph: {
+    title: "Matias Grinberg",
+    description: "Hey! This is me, Matias. A little about myself.",
+    url: "https://matias-grinberg.vercel.app",
+    siteName: "Matias Grinberg",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Matias Grinberg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Matias Grinberg",
+    description: "Hey! This is me, Matias. A little about myself.",
+    creator: "@matt1_g",
+    images: ["/og-image.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -31,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-[family-name:var(--font-geist-sans)] text-zinc-50 antialiased`}
       >
         <Nav />
         <main>{children}</main>
