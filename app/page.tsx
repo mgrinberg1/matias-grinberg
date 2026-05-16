@@ -1,6 +1,7 @@
 import Image from "next/image";
 import VideoGrid from "@/components/VideoGrid";
 import FadeIn from "@/components/FadeIn";
+import TwitterTimeline from "@/components/TwitterTimeline";
 
 // ─── Shared classes ───────────────────────────────────────────────────────────
 const LABEL =
@@ -165,13 +166,15 @@ export default async function HomePage() {
               Buenos Aires, Argentina — CEO &amp; Co-Founder @ Queiros
             </p>
           </div>
-          <p className="hero-line hero-line-3 text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-sm">
-            Building{" "}
+          <p className="hero-line hero-line-3 text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-md">
+            24 y/o. Building{" "}
             <a href="https://queiros.com.ar/es" target="_blank" rel="noopener noreferrer"
               className="text-zinc-700 dark:text-zinc-300 underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-600 hover:decoration-zinc-700 dark:hover:decoration-zinc-300 transition-colors">
               Queiros
             </a>
-            {" "}— AI-powered field data via WhatsApp. Prev BD at Complif (YC W22). Chasing hard problems at the intersection of ops, AI, and Latin America.
+            , the most frictionless way to turn real-world operations into structured data using AI + WhatsApp. Connecting the physical world with structured data.{" "}
+            <span className="italic text-zinc-600 dark:text-zinc-300">Culo inquieto.</span>{" "}
+            <span className="text-zinc-700 dark:text-zinc-200 font-medium">Go big or go home.</span>
           </p>
           <div className="hero-line hero-line-4 flex flex-wrap items-center gap-x-5 gap-y-3">
             <a href="https://www.linkedin.com/in/matias-grinberg7/" target="_blank" rel="noopener noreferrer" className={iconLink} aria-label="LinkedIn">
@@ -341,8 +344,27 @@ export default async function HomePage() {
               the trip. One of those moments where you can&apos;t quite believe it&apos;s actually
               happening — and then it does.
             </p>
-            <div className="pt-1">
-              <VideoGrid videos={[{ id: "80vXElWIEnE", title: "Meeting Pope Francis in Belgium" }]} />
+            <div className="pt-1 max-w-sm mx-auto sm:mx-0">
+              <a
+                href="https://www.youtube.com/watch?v=80vXElWIEnE"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Watch the video — proof it really happened"
+                className="group block aspect-[3/4] overflow-hidden rounded-sm border border-zinc-100 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 relative"
+              >
+                <Image
+                  src="/pope-francis.jpg"
+                  alt="Meeting Pope Francis in Belgium"
+                  width={600}
+                  height={800}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 flex items-end justify-start p-3 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className={`${MONO} text-[11px] text-white tracking-wider`}>
+                    ▶ watch the proof
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -408,28 +430,18 @@ export default async function HomePage() {
               ))}
             </div>
           </div>
-        </section>
-      </FadeIn>
 
-      <hr className={HR} />
-
-      {/* ── River Plate ──────────────────────────────────────────────────── */}
-      <FadeIn>
-        <section id="river" className="scroll-mt-20 space-y-10">
-          <p className={LABEL}>River Plate ⚽</p>
-
-          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-            In Argentina, football isn&apos;t something you choose — it&apos;s something you inherit.
-            River Plate is the thread connecting my childhood to my family, my friends, and Buenos
-            Aires itself. Sundays at the Monumental with my dad. 80,000 people singing in unison.
-            I was lucky enough to meet some of the players as a kid — one of those memories that
-            never leaves you. River has a history like few clubs in the world: titles, legends,
-            and moments that transcend the sport.
-          </p>
-
-          {/* YouTube channel */}
-          <div className="space-y-2">
-            <p className={LABEL}>The channel</p>
+          {/* River Plate */}
+          <div className="space-y-4">
+            <p className={LABEL}>⚽ River Plate</p>
+            <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              In Argentina, football isn&apos;t something you choose — it&apos;s something you
+              inherit. River Plate is the thread connecting my childhood to my family, my friends,
+              and Buenos Aires itself. Sundays at the Monumental with my dad. 80,000 people
+              singing in unison. I was lucky enough to meet some of the players as a kid — one
+              of those memories that never leaves you. River has a history like few clubs in
+              the world: titles, legends, and moments that transcend the sport.
+            </p>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
               Started a YouTube channel as a kid:{" "}
               <a
@@ -442,15 +454,9 @@ export default async function HomePage() {
               </a>
               . 400 subscribers. Still alive.
             </p>
-          </div>
-
-          <div className="space-y-4">
-            <p className={LABEL}>The day I went out with the players</p>
-            <VideoGrid videos={[{ id: "Igzyv7e2yB0", title: "River Plate — A childhood memory" }]} />
-          </div>
-
-          <div className="space-y-4">
-            <p className={LABEL}>With the players</p>
+            <div className="pt-1">
+              <VideoGrid videos={[{ id: "Igzyv7e2yB0", title: "The day I went out with the players" }]} />
+            </div>
             <div className="grid grid-cols-2 gap-3">
               {[1, 2, 3, 4].map((n) => (
                 <div key={n}
@@ -508,31 +514,27 @@ export default async function HomePage() {
 
       <hr className={HR} />
 
-      {/* ── Writing ──────────────────────────────────────────────────────── */}
+      {/* ── Latest tweets ────────────────────────────────────────────────── */}
       <FadeIn>
-        <section className="scroll-mt-20 space-y-4">
-          <p className={LABEL}>Writing</p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-            I write on{" "}
+        <section className="scroll-mt-20 space-y-6">
+          <div className="flex items-center justify-between">
+            <p className={LABEL}>Latest from X</p>
             <a
               href="https://x.com/matt1_g"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-zinc-700 dark:text-zinc-300 underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-600 hover:decoration-zinc-700 dark:hover:decoration-zinc-300 transition-colors"
+              className={`inline-flex items-center gap-2 ${MONO} text-[11px] text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors`}
             >
-              X / Twitter
+              <IconX />
+              <span>@matt1_g ↗</span>
             </a>
-            . That&apos;s where the thoughts go.
+          </div>
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            Not blogging right now — writing happens on X. Live feed below:
           </p>
-          <a
-            href="https://x.com/matt1_g"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center gap-2 ${MONO} text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50 transition-colors`}
-          >
-            <IconX />
-            <span>@matt1_g →</span>
-          </a>
+          <div className="border border-zinc-100 dark:border-zinc-800 rounded-sm overflow-hidden bg-black/30 backdrop-blur-sm">
+            <TwitterTimeline />
+          </div>
         </section>
       </FadeIn>
 
